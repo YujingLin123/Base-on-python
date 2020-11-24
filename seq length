@@ -22,7 +22,8 @@ def get_len(f):
 				id.append(t)		
 		for i in range(len(id)):
 			dict[id[i]] = m[i]
-			return dict
+			for key,value in dict.items():
+				return "{}:{}".format(key,value)
 #output file
 def file_output(dict):
 	with open("seq.txt","w") as fo:
