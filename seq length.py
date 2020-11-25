@@ -5,7 +5,8 @@ def file_input():
 	fi = input("请输入文件的名称:")
 	f = open(fi,"r",encoding="utf-8").read()
 	return f
-	
+
+#get sequence	
 def get_seq(f):
 	m = []
 	line = f.split('\n')
@@ -18,6 +19,7 @@ def get_seq(f):
 				m.append(len(t))
 		return m
 
+#get id
 def get_id(f):
 	id = []
 	line = f.split('\n')
@@ -27,12 +29,14 @@ def get_id(f):
 			if '>' in t:
 				id.append(t)
 		return id
-			
+
+#made up a dict		
 def list_dict(list1,list2):
 	dic = dict(map(lambda x,y:[x,y], list1,list2))
 	dic_data = [dic]
 	return dic_data
 
+#output file
 def read_csv(dict_data):
 	df = pd.DataFrame(dict_data)
 	data = df.values
