@@ -6,37 +6,28 @@ def file_input():
 	f = open(fi,"r",encoding="utf-8").read()
 	return f
 
-#get sequence	
-def get_seq(f):
+def get_len(f):
+	id = []
 	m = []
+	dict = {}
+	re_s = r'[^>]'
 	line = f.split('\n')
-	re_s=r'[^>]'
 	while '' in line:
 		line.remove('')
 		for t in line:
 			n = re.match(re_s,t)
 			if n:
 				m.append(len(t))
-		return m
-
-#get id
-def get_id(f):
-	id = []
-	line = f.split('\n')
-	while '' in line:
-		line.remove('')
 		for t in line:
 			if '>' in t:
 				id.append(t)
-		return id
-
-#made up a dict		
+		return [id,m]
+				
 def list_dict(list1,list2):
 	dic = dict(map(lambda x,y:[x,y], list1,list2))
 	dic_data = [dic]
 	return dic_data
 
-#output file
 def read_csv(dict_data):
 	df = pd.DataFrame(dict_data)
 	data = df.values
@@ -47,9 +38,8 @@ def read_csv(dict_data):
 		
 def main():
 	f = file_input()
-	ID = get_id(f)
-	Seq = get_seq(f)
-	dic_data = list_dict(ID,Seq)	
+	id,m = get_len(f)
+	dic_data = list_dict(id,m)	
 	read_csv(dic_data)
 
 main()
