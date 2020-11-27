@@ -2,7 +2,7 @@
 
 import re
 import pandas as pd
-import numpy as np
+
 #input file
 def file_input():
 	fi = input("请输入文件的名称:")
