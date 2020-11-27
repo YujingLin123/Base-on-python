@@ -53,3 +53,12 @@ def main():
 	save_file(num,id)
 	
 main()
+
+"""
+#result
+	A	G	C	T
+>ID1	3	4	4	3
+>ID2	2	2	2	2
+>ID3	6	3	6	4
+>ID4	8	7	8	8
+"""
