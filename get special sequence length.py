@@ -1,4 +1,4 @@
-#get sequence that is a special seq length seq
+#according to the special sequence length, we could get this sequence 
 
 import re
 import pandas as pd
