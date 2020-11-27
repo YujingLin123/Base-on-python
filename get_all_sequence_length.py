@@ -2,7 +2,7 @@ import re
 import pandas as pd
 #input file
 def file_input():
-	fi = input("请输入文件的名称:")
+	fi = input("File Name:")
 	f = open(fi,"r",encoding="utf-8").read()
 	return f
 
