@@ -8,7 +8,7 @@ def file_input():
 
 def get_len(f):
 	id = []
-	m = []
+	m = [] “
 	dict = {}
 	re_s = r'[^>]'
 	line = f.split('\n')
