@@ -22,15 +22,15 @@ def read_bed2():
 def OverlapRegion(df1,df2):
 	d = pd.merge(df1,df2,on="chr")
 	d0 = d[(d['start_y'] >= d['start_x']) & (d['start_y'] <= d['end_x']) & (d['end_y'] > d['end_x'])].drop_duplicates()
-	d0_overlap = (d0['end_x'] - d0['start_y'])/(d0['end_x']-d0['start_x'])
+	d0_overlap = (d0['end_x'] - d0['start_y'])/(d0['end_x']-d0['start_x']+1)
 	d0["Overlap"] = d0_overlap
 	
 	d1 = d[(d['start_y'] >= d['start_x']) & (d['start_y'] <= d['end_x']) & (d['end_y'] >= d['start_x']) & (d['end_y'] <= d['end_x'])].drop_duplicates()
-	d1_overlap = (d1['end_y']-d1['start_y'])/(d1['end_x']-d1['start_x'])
+	d1_overlap = (d1['end_y']-d1['start_y'])/(d1['end_x']-d1['start_x']+1)
 	d1["Overlap"] = d1_overlap
 	
 	d2 = d[(d['end_y'] >= d['start_x']) & (d['start_y'] < d['start_x'])].drop_duplicates()
-	d2_overlap = (d2['end_y']-d2['start_x'])/(d2['end_x']-d2['start_x'])
+	d2_overlap = (d2['end_y']-d2['start_x'])/(d2['end_x']-d2['start_x']+1)
 	d2["Overlap"] = d2_overlap
 	
 	df = d1.append(d2)
@@ -41,7 +41,7 @@ def OverlapRegion(df1,df2):
 	
 def save_file(df0):
 	OR = pd.DataFrame(df0)
-	OR.to_csv('OverlapRegion.txt',sep='\t')
+	OR.to_csv('OverlapRegion.txt',sep='\t',index=None)
 
 def main():
 	df1 = read_bed1()
