@@ -84,3 +84,12 @@ main()
 	
 end = time.time()
 print("used %s s" % str(end-start))
+
+"""
+cat gene.gff3 |awk '$3~/gene/ && $7~/+/{print $1"\t"$4"\t"$5}' |sort -k1,1 -k2,2n |bedtools flank -i - -g Ap.genome -l 0 -r 2000 > Apple_gene_down.bed
+cat gene.gff3 |awk '$3~/gene/ && $7~/+/{print $1"\t"$4"\t"$5}' |sort -k1,1 -k2,2n |bedtools flank -i - -g Ap.genome -l 2000 -r 0 > Apple_gene_up.bed
+
+cat gene.gff3 |awk '$3~/gene/ && $7~/-/{print $1"\t"$4"\t"$5}' |sort -k1,1 -k2,2n |bedtools flank -i - -g Ap.genome -l 0 -r 2000 > Apple_gene_up.bed
+cat gene.gff3 |awk '$3~/gene/ && $7~/-/{print $1"\t"$4"\t"$5}' |sort -k1,1 -k2,2n |bedtools flank -i - -g Ap.genome -l 2000 -r 0 > Apple_gene_down.bed
+
+"""
