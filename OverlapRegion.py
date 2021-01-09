@@ -36,7 +36,7 @@ def OverlapRegion(df1,df2):
 	df = d1.append(d2)
 	df = d0.append(df)
 	
-	df0 = df.groupby(by=['chr','start_x','end_x'])['Overlap'].mean().reset_index()
+	df0 = df.groupby(by=['chr','start_x','end_x'])['Overlap'].sum().reset_index()
 	return df0
 	
 def save_file(df0):
