@@ -10,7 +10,18 @@ def read_Enrichment():
 		df = pd.DataFrame(f)
 		df.columns = ["GO_term","study","all_study","pop","all_pop"]
 	return df
-	
+
+"""
+	GO1	not in GO1
+a	study	pop-study
+b	all_study-study	all_pop-all_study-(pop-study)
+
+	GO1 	not in GO1
+	a	b
+	c	d
+stats.fisher_exact([[a,b],[c,d]])
+"""
+
 def fisher_Enrichment(df):
 	df['a'] = df['study']
 	df['b'] = df['pop'] - df['study']
